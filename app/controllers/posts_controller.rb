@@ -5,11 +5,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.new(author_params)
 
-    else render json:@author
-     :new
-    end 
   end
 
   def update
@@ -18,7 +14,7 @@ class PostsController < ApplicationController
       @post.save
     redirect_to post_path(@post)
     else 
-      render :new
+      render :edit
     end
   end
 
