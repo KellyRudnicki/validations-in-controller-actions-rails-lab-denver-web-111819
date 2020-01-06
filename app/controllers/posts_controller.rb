@@ -5,6 +5,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.new(author_params)
+    if @post.valid?
+      @post.save
+      redirect_to author_path(@post)
+    else render json:@author
+     :new
+    end 
   end
 
   def update
