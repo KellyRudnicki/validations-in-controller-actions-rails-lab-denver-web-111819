@@ -8,8 +8,8 @@ class AuthorsController < ApplicationController
     if @author.valid?
       @author.save
       redirect_to author_path(@author)
-    else render json:@author
-     :new
+    else 
+      render :new
     end 
   end
 
@@ -18,7 +18,7 @@ class AuthorsController < ApplicationController
     redirect_to author_path(@author)
   end
 
-  private
+  # private
 
   def author_params
     params.permit(:email, :name)
