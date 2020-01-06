@@ -6,9 +6,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.new(author_params)
-    if @post.valid?
-      @post.save
-      redirect_to author_path(@post)
+
     else render json:@author
      :new
     end 
@@ -16,8 +14,12 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    
+    if @post.valid?
+      @post.save
     redirect_to post_path(@post)
+    else 
+      render :new
+    end
   end
 
   private
